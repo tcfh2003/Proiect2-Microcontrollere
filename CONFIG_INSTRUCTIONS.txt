@@ -1,0 +1,37 @@
+Preliminaries:
+
+1. Install STM32CubeMX (default: C:\Users\TCFH2003\AppData\Local\Programs\STM32CubeMX\STM32CubeMX.exe)
+2. Install STM32CubeCLT (default: C:\ST\STM32CubeCLT_1.18.0)
+3. Install STM32CubeProgrammer (default: C:\Program Files\STMicroelectronics\STM32Cube\STM32CubeProgrammer\bin)
+4. If not installed, install FTDI FT232RL drivers
+5. Install VSCode and STM32 VSCode Extension
+
+Project config:
+
+1. In STM32 VSCode Extension, select 'Launch STM32CubeMX'
+2. Configure pinout and functions in STM32CubeMX
+3. In STM32CubeMX, change toolchain to CMake, and select the location where you want to create the project.
+4. Add the following include paths for Intellisense to see all dependencies:
+
+'''
+"${default}",
+                "${workspaceFolder}/Core/Inc",
+                "${workspaceFolder}/Drivers/STM32F1xx_HAL_Driver/Inc",
+                "${workspaceFolder}/Drivers/CMSIS/Include",
+                "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32F1xx/Include",
+                "${workspaceFolder}/Drivers/CMSIS/Core/Include",
+                "${workspaceFolder}/Drivers/CMSIS/Core_A/Include",
+                "${workspaceFolder}/Drivers/CMSIS/DSP/Include",
+                "${workspaceFolder}/Drivers/CMSIS/Core/Include",
+                "${workspaceFolder}/Drivers/CMSIS/NN/Include",
+                "${workspaceFolder}/Drivers/CMSIS/RTOS2/Include"
+'''
+
+5. Select arm-gcc as compiler
+6. Build project
+7. Open STM32CubeProgrammer and open the .elf file in the build folder in the parent folder of the project folder.
+8. Set BluePill board to BOOT_10 and Reset.
+9. Select UART, COM#, Connect.
+10. Click Download.
+11. Set BluePill board to BOOT_00 and Reset.
+12. The program should now be running.
