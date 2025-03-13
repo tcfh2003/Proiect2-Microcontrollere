@@ -29,7 +29,7 @@ Project config:
 
 5. Select arm-gcc as compiler
 6. Build project
-7. Open STM32CubeProgrammer and open the .elf file in the build folder in the parent folder of the project folder.
+7. Open STM32CubeProgrammer and open the .elf file in the build folder.
 8. Set BluePill board to BOOT_10 and Reset.
 9. Select UART, COM#, Connect.
 10. Click Download.
