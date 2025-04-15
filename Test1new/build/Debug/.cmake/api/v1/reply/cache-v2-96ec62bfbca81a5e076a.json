@@ -163,7 +163,7 @@
 			[
 				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel ..."
 				}
 			],
 			"type" : "STRING",
@@ -179,7 +179,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/Theo/Documents/!scoala/P2/Test1/Test1new/build"
+			"value" : "d:/!!scoala/an3sem2/Proiect2/Proiect2-Microcontrollere/Test1new/build/Debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -252,22 +252,6 @@
 			],
 			"type" : "INTERNAL",
 			"value" : "C:/ST/STM32CubeCLT_1.18.0/CMake/bin/ctest.exe"
-		},
-		{
-			"name" : "CMAKE_CXX_COMPILER",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
-				}
-			],
-			"type" : "FILEPATH",
-			"value" : "C:/ST/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/arm-none-eabi-g++.exe"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER_AR",
@@ -380,22 +364,6 @@
 			],
 			"type" : "STRING",
 			"value" : "-O2 -g -DNDEBUG"
-		},
-		{
-			"name" : "CMAKE_C_COMPILER",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
-				}
-			],
-			"type" : "FILEPATH",
-			"value" : "C:/ST/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/arm-none-eabi-gcc.exe"
 		},
 		{
 			"name" : "CMAKE_C_COMPILER_AR",
@@ -630,18 +598,6 @@
 			"value" : ""
 		},
 		{
-			"name" : "CMAKE_EXPORT_COMPILE_COMMANDS",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
-				}
-			],
-			"type" : "BOOL",
-			"value" : "TRUE"
-		},
-		{
 			"name" : "CMAKE_EXTRA_GENERATOR",
 			"properties" : 
 			[
@@ -663,7 +619,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/Theo/Documents/!scoala/P2/Test1/Test1new/build/CMakeFiles/pkgRedirects"
+			"value" : "D:/!!scoala/an3sem2/Proiect2/Proiect2-Microcontrollere/Test1new/build/Debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -723,7 +679,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/Theo/Documents/!scoala/P2/Test1/Test1new"
+			"value" : "D:/!!scoala/an3sem2/Proiect2/Proiect2-Microcontrollere/Test1new"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1194,6 +1150,18 @@
 			"value" : "CMAKE_TAPI-NOTFOUND"
 		},
 		{
+			"name" : "CMAKE_TOOLCHAIN_FILE",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The CMake toolchain file"
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "D:/!!scoala/an3sem2/Proiect2/Proiect2-Microcontrollere/Test1new/cmake/gcc-arm-none-eabi.cmake"
+		},
+		{
 			"name" : "CMAKE_VERBOSE_MAKEFILE",
 			"properties" : 
 			[
@@ -1219,7 +1187,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/Theo/Documents/!scoala/P2/Test1/Test1new/build"
+			"value" : "D:/!!scoala/an3sem2/Proiect2/Proiect2-Microcontrollere/Test1new/build/Debug"
 		},
 		{
 			"name" : "Test1new_IS_TOP_LEVEL",
@@ -1243,7 +1211,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/Theo/Documents/!scoala/P2/Test1/Test1new"
+			"value" : "D:/!!scoala/an3sem2/Proiect2/Proiect2-Microcontrollere/Test1new"
 		}
 	],
 	"kind" : "cache",
