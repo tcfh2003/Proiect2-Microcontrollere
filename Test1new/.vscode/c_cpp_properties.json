@@ -1,0 +1,25 @@
+{
+    "version": 4,
+    "configurations": [
+        {
+            "name": "STM32",
+            "configurationProvider": "ms-vscode.cmake-tools",
+            "intelliSenseMode": "${default}",
+            "includePath": [
+                "${default}",
+                "${workspaceFolder}/Core/Inc",
+                "${workspaceFolder}/Drivers/STM32F1xx_HAL_Driver/Inc",
+                "${workspaceFolder}/Drivers/CMSIS/Include",
+                "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32F1xx/Include",
+                "${workspaceFolder}/Drivers/CMSIS/Core/Include",
+                "${workspaceFolder}/Drivers/CMSIS/Core_A/Include",
+                "${workspaceFolder}/Drivers/CMSIS/DSP/Include",
+                "${workspaceFolder}/Drivers/CMSIS/Core/Include",
+                "${workspaceFolder}/Drivers/CMSIS/NN/Include",
+                "${workspaceFolder}/Drivers/CMSIS/RTOS2/Include",
+                "${workspaceFolder}/Middlewares",
+                "${workspaceFolder}/USB_DEVICE"
+            ]
+        }
+    ]
+}

@@ -1155,10 +1155,10 @@
 			[
 				{
 					"name" : "HELPSTRING",
-					"value" : "The CMake toolchain file"
+					"value" : "No help, variable specified on the command line."
 				}
 			],
-			"type" : "FILEPATH",
+			"type" : "UNINITIALIZED",
 			"value" : "D:/!!scoala/an3sem2/Proiect2/Proiect2-Microcontrollere/Test1new/cmake/gcc-arm-none-eabi.cmake"
 		},
 		{

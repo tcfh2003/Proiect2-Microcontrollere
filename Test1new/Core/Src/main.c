@@ -104,30 +104,31 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 }
 
 /* Timer2 Interrupt Service Routine: Blinks LEDs */
+// Team code 17 = 3k+2  =>  colors: BLUE, YELLOW, MAGENTA
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim2)
 {
-  if(ticks++ == 100)    // 100 timer2 ticks = 1 second 
+  if(ticks++ == 10)    // 1 timer2 tick = 1 ms
     ticks=0;   // reset 
-  switch (ticks) {
-    case 10: 
-      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, 1); // Red LED
-      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, 0);
-      HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
+  switch (SM_State) {
+    case SM_BLUE: 
+      HAL_GPIO_WritePin(RED_LED_BANK, RED_LED_PIN, 0);
+      HAL_GPIO_WritePin(GREEN_LED_BANK, GREEN_LED_PIN, 0);
+      HAL_GPIO_WritePin(BLUE_LED_BANK, BLUE_LED_PIN, 1);
       break; 
-    case 25:
-      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, 0);
-      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, 1); // Green
-      HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
+    case SM_YELLOW:
+      HAL_GPIO_WritePin(RED_LED_BANK, RED_LED_PIN, ticks < 8);
+      HAL_GPIO_WritePin(GREEN_LED_BANK, GREEN_LED_PIN, ticks > 4);
+      HAL_GPIO_WritePin(BLUE_LED_BANK, BLUE_LED_PIN, 0);
       break; 
-    case 40:
-      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, 0);
-      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, 0); 
-      HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1); // Blue
+    case SM_MAGENTA:
+      HAL_GPIO_WritePin(RED_LED_BANK, RED_LED_PIN, ticks < 5);
+      HAL_GPIO_WritePin(GREEN_LED_BANK, GREEN_LED_PIN, 0);
+      HAL_GPIO_WritePin(BLUE_LED_BANK, BLUE_LED_PIN, ticks > 4);
       break; 
-    case 55:
-      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, 0); // all OFF
-      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, 0); 
-      HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0); 
+    case SM_OFF:
+      HAL_GPIO_WritePin(RED_LED_BANK, RED_LED_PIN, 0);
+      HAL_GPIO_WritePin(GREEN_LED_BANK, GREEN_LED_PIN, 0);
+      HAL_GPIO_WritePin(BLUE_LED_BANK, BLUE_LED_PIN, 0);
       break;
   }  // case   
 }
@@ -193,24 +194,34 @@ int main(void)
     switch(SM_State) {     // main State Machine
       case SM_START:
         printf("Code version %d.%d starting...\n\r", SW_VERSION/10, SW_VERSION%10);
-        SM_State=SM_FAST_BLINK;
+        SM_State=SM_BLUE;
         break;
 
-      case SM_FAST_BLINK:
+      case SM_BLUE:
         if(User_B_Pressed) {
-          htim2.Init.Period = 300;    // change timer counter period 3x slower
-          if (HAL_TIM_Base_Init(&htim2) != HAL_OK) Error_Handler();  // reinitialize timer
           User_B_Pressed = 0; // reset flag because it was processed
-          SM_State = SM_SLOW_BLINK;
+          SM_State = SM_YELLOW;
         }
         break;
 
-      case SM_SLOW_BLINK:
+      case SM_YELLOW:
         if(User_B_Pressed) {
-          htim2.Init.Period = 100;  // timer counter period original value
-          if (HAL_TIM_Base_Init(&htim2) != HAL_OK) Error_Handler(); // reinitialize timer
           User_B_Pressed = 0;
-          SM_State = SM_FAST_BLINK;
+          SM_State = SM_MAGENTA;
+        }
+        break;
+      
+      case SM_MAGENTA:
+        if(User_B_Pressed) {
+          User_B_Pressed = 0;
+          SM_State = SM_OFF;
+        }
+        break;
+
+      case SM_OFF:
+        if(User_B_Pressed) {
+          User_B_Pressed = 0;
+          SM_State = SM_BLUE;
         }
         break;
 
@@ -290,7 +301,7 @@ static void MX_TIM2_Init(void)
   htim2.Instance = TIM2;
   htim2.Init.Prescaler = 7199;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 100;
+  htim2.Init.Period = 10;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)

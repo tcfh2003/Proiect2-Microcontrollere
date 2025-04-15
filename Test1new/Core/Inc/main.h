@@ -64,8 +64,18 @@ void Error_Handler(void);
 #define SW_VERSION    11    // will be displayed as Major.Minor
 // states for the State Machine
 #define SM_START      0   // initial state; will go to SM_FAST_BLINK from here     
-#define SM_FAST_BLINK 1   // go here from SM_START or on button press from SM_SLOW_BLINK
-#define SM_SLOW_BLINK 2   // go here on button press from SM_FAST_BLINK
+#define SM_BLUE 1
+#define SM_YELLOW 2
+#define SM_MAGENTA 3
+#define SM_OFF 4
+
+
+#define RED_LED_BANK GPIOB
+#define GREEN_LED_BANK GPIOB
+#define BLUE_LED_BANK GPIOA
+#define RED_LED_PIN GPIO_PIN_0
+#define GREEN_LED_PIN GPIO_PIN_1
+#define BLUE_LED_PIN GPIO_PIN_8
 
 /* USER CODE END Private defines */
 
