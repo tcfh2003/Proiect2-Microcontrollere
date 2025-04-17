@@ -122,39 +122,39 @@
 			[
 				{
 					"backtrace" : 2,
-					"path" : "D:/!!scoala/an3sem2/Proiect2/Proiect2-Microcontrollere/Test1new/USB_DEVICE/App"
+					"path" : "C:/Users/Theo/Documents/!scoala/P2/Proiect2-Microcontrollere/Test1new/USB_DEVICE/App"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "D:/!!scoala/an3sem2/Proiect2/Proiect2-Microcontrollere/Test1new/USB_DEVICE/Target"
+					"path" : "C:/Users/Theo/Documents/!scoala/P2/Proiect2-Microcontrollere/Test1new/USB_DEVICE/Target"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "D:/!!scoala/an3sem2/Proiect2/Proiect2-Microcontrollere/Test1new/Core/Inc"
+					"path" : "C:/Users/Theo/Documents/!scoala/P2/Proiect2-Microcontrollere/Test1new/Core/Inc"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "D:/!!scoala/an3sem2/Proiect2/Proiect2-Microcontrollere/Test1new/Drivers/STM32F1xx_HAL_Driver/Inc"
+					"path" : "C:/Users/Theo/Documents/!scoala/P2/Proiect2-Microcontrollere/Test1new/Drivers/STM32F1xx_HAL_Driver/Inc"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "D:/!!scoala/an3sem2/Proiect2/Proiect2-Microcontrollere/Test1new/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy"
+					"path" : "C:/Users/Theo/Documents/!scoala/P2/Proiect2-Microcontrollere/Test1new/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "D:/!!scoala/an3sem2/Proiect2/Proiect2-Microcontrollere/Test1new/Middlewares/ST/STM32_USB_Device_Library/Core/Inc"
+					"path" : "C:/Users/Theo/Documents/!scoala/P2/Proiect2-Microcontrollere/Test1new/Middlewares/ST/STM32_USB_Device_Library/Core/Inc"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "D:/!!scoala/an3sem2/Proiect2/Proiect2-Microcontrollere/Test1new/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc"
+					"path" : "C:/Users/Theo/Documents/!scoala/P2/Proiect2-Microcontrollere/Test1new/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "D:/!!scoala/an3sem2/Proiect2/Proiect2-Microcontrollere/Test1new/Drivers/CMSIS/Device/ST/STM32F1xx/Include"
+					"path" : "C:/Users/Theo/Documents/!scoala/P2/Proiect2-Microcontrollere/Test1new/Drivers/CMSIS/Device/ST/STM32F1xx/Include"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "D:/!!scoala/an3sem2/Proiect2/Proiect2-Microcontrollere/Test1new/Drivers/CMSIS/Include"
+					"path" : "C:/Users/Theo/Documents/!scoala/P2/Proiect2-Microcontrollere/Test1new/Drivers/CMSIS/Include"
 				}
 			],
 			"language" : "C",

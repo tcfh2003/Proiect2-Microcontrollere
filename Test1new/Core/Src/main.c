@@ -103,6 +103,22 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
   HAL_UART_Receive_IT(&huart1, uart_buf, 1); // reactivate interrupt for next char
 }
 
+void Morse_Code_State_Switcher(){
+  // Team code 17 = 3k+2  =>  mesaj = "hello 17"
+  const char morse_message[] = ".... . ._.. ._.. ___   .____ __...";
+  uint8_t previous_SM_State = SM_State;
+  for(int i = 0 ; i < 35 ; i++){
+    switch(morse_message[i]){
+      case '.':
+        SM_State = SM_BLUE;
+        HAL_Delay(120);
+        break;
+      case '_':
+        break;
+    }
+  }
+}
+
 /* Timer2 Interrupt Service Routine: Blinks LEDs */
 // Team code 17 = 3k+2  =>  colors: BLUE, YELLOW, MAGENTA
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim2)
