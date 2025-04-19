@@ -102,8 +102,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
     switch(uart_Morse_Token_index){
       case 0:
         if(uart_buf[0] == 'M'){
-          uart_buf[0] = '0';
-          HAL_UART_Transmit(&huart1, uart_buf, 1, 10);
           uart_Morse_Token_index++;
           HAL_UART_Receive_IT(&huart1, uart_buf, 1); // reactivate interrupt for next char
           return;
@@ -111,8 +109,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
         break;
       case 1:
         if(uart_buf[0] == 'o'){
-          uart_buf[0] = '1';
-          HAL_UART_Transmit(&huart1, uart_buf, 1, 10);
           uart_Morse_Token_index++;
           HAL_UART_Receive_IT(&huart1, uart_buf, 1); // reactivate interrupt for next char
           return;
@@ -120,8 +116,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
         break;
       case 2:
         if(uart_buf[0] == 'r'){
-          uart_buf[0] = '2';
-          HAL_UART_Transmit(&huart1, uart_buf, 1, 10);
           uart_Morse_Token_index++;
           HAL_UART_Receive_IT(&huart1, uart_buf, 1); // reactivate interrupt for next char
           return;
@@ -129,8 +123,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
         break;
       case 3:
         if(uart_buf[0] == 's'){
-          uart_buf[0] = '3';
-          HAL_UART_Transmit(&huart1, uart_buf, 1, 10);
           uart_Morse_Token_index++;
           HAL_UART_Receive_IT(&huart1, uart_buf, 1); // reactivate interrupt for next char
           return;
@@ -138,8 +130,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
         break;
       case 4:
         if(uart_buf[0] == 'e'){
-          uart_buf[0] = '4';
-          HAL_UART_Transmit(&huart1, uart_buf, 1, 10);
           uart_Morse_Token_index = 0;
           MorseMode = 1;
           HAL_UART_Receive_IT(&huart1, uart_buf, 1); // reactivate interrupt for next char
@@ -158,23 +148,22 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 
 void Morse_Code_State_Switcher(){
   // Team code 17 = 3k+2  =>  mesaj = "hello 17"
+  // t = 150ms
   const char morse_message[] = ".... . ._.. ._.. ___   .____ __...";
   uint8_t previous_SM_State = SM_State;
   for(int i = 0 ; i < 35 ; i++){
-    uart_buf[0] = '0' + i;
-    HAL_UART_Transmit(&huart1, uart_buf, 1, 10);
     switch(morse_message[i]){
       case '.':
         SM_State = SM_BLUE;
-        HAL_Delay(100);
+        HAL_Delay(75);
         SM_State = SM_OFF;
-        HAL_Delay(40);
+        HAL_Delay(75);
         break;
       case '_':
         SM_State = SM_YELLOW;
-        HAL_Delay(300);
+        HAL_Delay(375);
         SM_State = SM_OFF;
-        HAL_Delay(40);
+        HAL_Delay(75);
         break;
       case ' ':
         SM_State = SM_OFF;

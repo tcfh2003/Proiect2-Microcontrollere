@@ -79,3 +79,5 @@
 38	266	7667718996033511	cmake/stm32cubemx/CMakeFiles/USB_Device_Library.dir/__/__/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj	5474bde30aec3e1e
 31	266	7667718996043463	cmake/stm32cubemx/CMakeFiles/USB_Device_Library.dir/__/__/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj	5767fd34f1d3d6ac
 266	392	7667718997108653	Test1new.elf	fa1b8cdd8c5d8990
+3	160	7667731345983089	CMakeFiles/Test1new.dir/Core/Src/main.c.obj	bbcf8d22951b5683
+160	302	7667731347120504	Test1new.elf	fa1b8cdd8c5d8990
