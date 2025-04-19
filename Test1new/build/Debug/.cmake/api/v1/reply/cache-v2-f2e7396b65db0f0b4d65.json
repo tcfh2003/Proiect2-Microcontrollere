@@ -179,7 +179,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/Theo/Documents/!scoala/P2/Proiect2-Microcontrollere/Test1new/build/Debug"
+			"value" : "d:/!!scoala/an3sem2/Proiect2/Proiect2-Microcontrollere/Test1new/build/Debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -619,7 +619,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/Theo/Documents/!scoala/P2/Proiect2-Microcontrollere/Test1new/build/Debug/CMakeFiles/pkgRedirects"
+			"value" : "D:/!!scoala/an3sem2/Proiect2/Proiect2-Microcontrollere/Test1new/build/Debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -679,7 +679,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/Theo/Documents/!scoala/P2/Proiect2-Microcontrollere/Test1new"
+			"value" : "D:/!!scoala/an3sem2/Proiect2/Proiect2-Microcontrollere/Test1new"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1159,7 +1159,7 @@
 				}
 			],
 			"type" : "UNINITIALIZED",
-			"value" : "C:/Users/Theo/Documents/!scoala/P2/Proiect2-Microcontrollere/Test1new/cmake/gcc-arm-none-eabi.cmake"
+			"value" : "D:/!!scoala/an3sem2/Proiect2/Proiect2-Microcontrollere/Test1new/cmake/gcc-arm-none-eabi.cmake"
 		},
 		{
 			"name" : "CMAKE_VERBOSE_MAKEFILE",
@@ -1187,7 +1187,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/Theo/Documents/!scoala/P2/Proiect2-Microcontrollere/Test1new/build/Debug"
+			"value" : "D:/!!scoala/an3sem2/Proiect2/Proiect2-Microcontrollere/Test1new/build/Debug"
 		},
 		{
 			"name" : "Test1new_IS_TOP_LEVEL",
@@ -1211,7 +1211,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/Theo/Documents/!scoala/P2/Proiect2-Microcontrollere/Test1new"
+			"value" : "D:/!!scoala/an3sem2/Proiect2/Proiect2-Microcontrollere/Test1new"
 		}
 	],
 	"kind" : "cache",

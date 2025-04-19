@@ -48,7 +48,9 @@ UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
 uint8_t uart_buf[1];
+uint8_t uart_Morse_Token_index;
 uint8_t ticks;  // timer2 ticks
+uint8_t MorseMode = 0;
 uint8_t SM_State; // State for the State Machine
 uint8_t User_B_Pressed = 0;  // flag for button
 /* USER CODE END PV */
@@ -93,12 +95,63 @@ int _write(int fd, char * ptr, int len)
 /* Callback function for UART RX Complete: process incoming character*/
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-  if(uart_buf[0] != '?' ) {
+  if(uart_buf[0] == '?'){
+    printf("Sw Version %d.%d\r\n",SW_VERSION/10, SW_VERSION%10);
+  }
+  else{
+    switch(uart_Morse_Token_index){
+      case 0:
+        if(uart_buf[0] == 'M'){
+          uart_buf[0] = '0';
+          HAL_UART_Transmit(&huart1, uart_buf, 1, 10);
+          uart_Morse_Token_index++;
+          HAL_UART_Receive_IT(&huart1, uart_buf, 1); // reactivate interrupt for next char
+          return;
+        }
+        break;
+      case 1:
+        if(uart_buf[0] == 'o'){
+          uart_buf[0] = '1';
+          HAL_UART_Transmit(&huart1, uart_buf, 1, 10);
+          uart_Morse_Token_index++;
+          HAL_UART_Receive_IT(&huart1, uart_buf, 1); // reactivate interrupt for next char
+          return;
+        }
+        break;
+      case 2:
+        if(uart_buf[0] == 'r'){
+          uart_buf[0] = '2';
+          HAL_UART_Transmit(&huart1, uart_buf, 1, 10);
+          uart_Morse_Token_index++;
+          HAL_UART_Receive_IT(&huart1, uart_buf, 1); // reactivate interrupt for next char
+          return;
+        }
+        break;
+      case 3:
+        if(uart_buf[0] == 's'){
+          uart_buf[0] = '3';
+          HAL_UART_Transmit(&huart1, uart_buf, 1, 10);
+          uart_Morse_Token_index++;
+          HAL_UART_Receive_IT(&huart1, uart_buf, 1); // reactivate interrupt for next char
+          return;
+        }
+        break;
+      case 4:
+        if(uart_buf[0] == 'e'){
+          uart_buf[0] = '4';
+          HAL_UART_Transmit(&huart1, uart_buf, 1, 10);
+          uart_Morse_Token_index = 0;
+          MorseMode = 1;
+          HAL_UART_Receive_IT(&huart1, uart_buf, 1); // reactivate interrupt for next char
+          return;
+        }
+        break;
+    }
+
+    uart_Morse_Token_index = 0;
     uart_buf[0]++;  // increment received char to transmit next one
     HAL_UART_Transmit(&huart1, uart_buf, 1, 10);
   }
-  else
-    printf("Sw Version %d.%d\r\n",SW_VERSION/10, SW_VERSION%10);
   
   HAL_UART_Receive_IT(&huart1, uart_buf, 1); // reactivate interrupt for next char
 }
@@ -108,15 +161,29 @@ void Morse_Code_State_Switcher(){
   const char morse_message[] = ".... . ._.. ._.. ___   .____ __...";
   uint8_t previous_SM_State = SM_State;
   for(int i = 0 ; i < 35 ; i++){
+    uart_buf[0] = '0' + i;
+    HAL_UART_Transmit(&huart1, uart_buf, 1, 10);
     switch(morse_message[i]){
       case '.':
         SM_State = SM_BLUE;
-        HAL_Delay(120);
+        HAL_Delay(100);
+        SM_State = SM_OFF;
+        HAL_Delay(40);
         break;
       case '_':
+        SM_State = SM_YELLOW;
+        HAL_Delay(300);
+        SM_State = SM_OFF;
+        HAL_Delay(40);
+        break;
+      case ' ':
+        SM_State = SM_OFF;
+        HAL_Delay(150);
         break;
     }
   }
+  SM_State = previous_SM_State;
+  MorseMode = 0;
 }
 
 /* Timer2 Interrupt Service Routine: Blinks LEDs */
@@ -186,6 +253,9 @@ int main(void)
   /* USER CODE BEGIN 2 */
   HAL_UART_Receive_IT(&huart1, uart_buf, 1); // enable UART Rx IT=interrupt
   HAL_TIM_Base_Start_IT(&htim2);  //enable Timer 2 interrupt
+
+  uart_Morse_Token_index = 0;
+  MorseMode = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -206,7 +276,11 @@ int main(void)
           printf("USER\n\r");
         }  
     }
-     
+    
+    if(MorseMode) Morse_Code_State_Switcher();        // Doing this here so that I don't have to bother with interrupt priorities.
+                                                      // It also blocks out the following switch statement, which is ok because I
+                                                      // want the USER button to not do anything while it's blinking morse code.
+
     switch(SM_State) {     // main State Machine
       case SM_START:
         printf("Code version %d.%d starting...\n\r", SW_VERSION/10, SW_VERSION%10);

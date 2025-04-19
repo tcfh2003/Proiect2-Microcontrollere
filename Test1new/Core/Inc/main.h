@@ -54,6 +54,7 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);
 
+void Morse_Code_State_Switcher(void);
 /* USER CODE BEGIN EFP */
 
 /* USER CODE END EFP */
